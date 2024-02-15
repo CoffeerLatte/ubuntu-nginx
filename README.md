@@ -47,3 +47,5 @@ RUN     echo -e "Package: *\nPin: origin nginx.org\nPin: release o=nginx\nPin-Pr
 RUN     apt update
 RUN     apt install nginx -y
 ```
+# Docker hun url 배포
+https://hub.docker.com/repository/docker/jeonseungmin/ubuntu_nginx-dockerfile/tags?page=1&ordering=last_updated
