@@ -1,5 +1,6 @@
 # ubuntu-nginx
 
+```
 - apt install vim
 
 
@@ -21,13 +22,28 @@
 8. echo -e "Package: *\nPin: origin nginx.org\nPin: release o=nginx\nPin-Priority: 900\n" \
     | sudo tee /etc/apt/preferences.d/99nginx
 
-
+```
 sudo apt update
 sudo apt install nginx
 
+# nginx 설치 완료 후
+```
 nginx -v
 
 service nginx start
 
 cd /var/www/html/
 vi index.nginx-debian.html
+```
+# Dockerfile
+```
+FROM ubuntu:22.04
+
+RUN apt update
+RUN     apt install vim -y
+RUN     apt install curl gnupg2 ca-certificates lsb-release ubuntu-keyring -y
+RUN     echo "deb [signed-by=/usr/share/keyrings/nginx-archive-keyring.gpg] \ http://nginx.org/packages/ubuntu `lsb_release -cs` nginx"
+RUN     echo -e "Package: *\nPin: origin nginx.org\nPin: release o=nginx\nPin-Priority: 900\n"
+RUN     apt update
+RUN     apt install nginx -y
+```
